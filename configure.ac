@@ -105,9 +105,9 @@ fi
 AC_ARG_ENABLE([gsl], [AS_HELP_STRING([--enable-gsl], [Use GNU scientific library [default = yes]])], [gsl=${enableval}], [gsl=yes])
 if test x"${gsl}" = xyes; then
     AC_CHECK_HEADERS([gsl/gsl_errno.h gsl/gsl_spline.h], [have_gsl=yes], [have_gsl=no])
-    if test x"${have_gsl}" = xyes; then
-        AC_SEARCH_LIBS([gsl_interp_accel_alloc], [gsl], [have_gsl=yes], [have_gsl=no])
+    if test x"${have_gsl}" = xyes; then        
         AC_SEARCH_LIBS([cblas_sswap], [gslcblas], [have_gsl_cblas=yes], [have_gsl_cblas=no])
+        AC_SEARCH_LIBS([gsl_interp_accel_alloc], [gsl], [have_gsl=yes], [have_gsl=no])
         if test x"${have_gsl_cblas}" = xno; then
             have_gsl=no
         fi
